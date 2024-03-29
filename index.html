@@ -4,77 +4,157 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Happy Birthday!</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="splide.min.css">
 	<script src="splide.min.js"></script>
 	<style>
+		* {
+			box-sizing: border-box;
+		}
+
 		body {
 			margin: 0;
-			padding: 0;
+			padding: 30px 0 0;
+			background: linear-gradient(-45deg, #E6E6FA, #fbf4df);
+			font-family: "Montserrat", sans-serif;
+		}
+
+		h1 {
+			margin: 0;
+			line-height: 50px;
+			text-align: center;
+			font-weight: 400;
+			font-size: 42px;
 		}
 
 		.container {
-			height: 100vh;
+			height: calc(100vh - 80px);
+			padding: 20px 0;
 			display: flex;
+			flex-direction: column;
+			justify-content: center;
 			align-items: center;
+			overflow: hidden;
 		}
-
-		/*.splide__slide img {
-		  width: 100%;
-		  height: auto;
-		}*/
 
 		.splide__slide img {
 		  width: 100%;
 		  height: 100%;
+		  max-height: 600px;
 		  object-fit: cover;
 		  transition: transform 0.4s;
 		}
 
-		/*.splide__slide.is-prev img,
-		.splide__slide.is-next img {
-			transform: scale(0.8);
-		}*/
 		.splide__slide:not(.real-active) img {
-			transform: scale(0.8);
+			transform: scale(0.85);
+		}
+
+		.splide__slide.is-next:not(.real-active) img {
+			transform: scale(0.85) translateX(-10px);
+		}
+
+		.splide__slide.is-prev:not(.real-active) img {
+			transform: scale(0.85) translateX(10px);
+		}
+
+		.splide__track {
+			overflow: visible !important;
+		}
+
+		.banner {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: linear-gradient(45deg, lightcoral, #FFE5B4);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 38px;
+			text-align: center;
+			color: white;
+			text-shadow: 1px 1px black;
+			z-index: 3;
+			animation: 1s ease 4s 1 forwards slideuphide;
+		}
+
+		.banner::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: #000042;
+			transform: translateY(100%);
+			animation: 1s ease 3s 1 forwards slideupshow;
+		}
+
+		@keyframes slideupshow {
+		  from {
+		    transform: translateY(100%);
+		  }
+
+		  to {
+		    transform: translateY(0%);
+		  }
+		}
+
+		@keyframes slideuphide {
+		  from {
+		    transform: translateY(0%);
+		  }
+
+		  to {
+		    transform: translateY(-100%);
+		  }
 		}
 	</style>
 </head>
 <body>
+	<div class="banner">С Днём Рождения, Любимая!</div>
+	<h1>ОЛЯ 3.0</h1>
 	<div class="container">
-		<section id="image-carousel" class="splide" aria-label="Beautiful Images">
-  <div class="splide__track">
-		<ul class="splide__list">
-			<li class="splide__slide">
-				<img src="img/1.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="img/2.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="img/3.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="img/4.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="img/5.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="img/6.jpg" alt="">
-			</li>
-			<li class="splide__slide">
-				<img src="img/7.jpg" alt="">
-			</li>
-		</ul>
-  </div>
-</section>
+		<section id="image-carousel" class="splide" aria-label="Beautiful Photos">
+	  		<div class="splide__track">
+				<ul class="splide__list">
+					<li class="splide__slide">
+						<img src="img/1.jpg" alt="">
+					</li>
+					<li class="splide__slide">
+						<img src="img/2.jpg" alt="">
+					</li>
+					<li class="splide__slide">
+						<img src="img/3.jpg" alt="">
+					</li>
+					<li class="splide__slide">
+						<img src="img/4.jpg" alt="">
+					</li>
+					<li class="splide__slide">
+						<img src="img/5.jpg" alt="">
+					</li>
+					<li class="splide__slide">
+						<img src="img/6.jpg" alt="">
+					</li>
+					<li class="splide__slide">
+						<img src="img/7.jpg" alt="">
+					</li>
+				</ul>
+	  		</div>
+		</section>
 	</div>
 
 	<script>
   var splide = new Splide( '#image-carousel', {
-    // heightRatio: 0.5,
+    // heightRatio: 1.5,
+    width: '800px',
+    // height: '600px',
+    pagination: false,
     type   : 'loop',
-    padding: '3rem',
+    padding: '2.5rem',
     // gap: '1rem',
   } ).mount();
 
